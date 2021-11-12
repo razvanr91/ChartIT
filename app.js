@@ -3,6 +3,8 @@
 let numberOfDays = 60;
 let count = 0;
 
+let dateSpan = document.getElementById('date');
+
 const ctx = document.getElementById('chart').getContext('2d');
 let data;
 let countryCode = 'RO';
@@ -52,7 +54,7 @@ for(let day of timeline) {
 
 
 let updatedAt = new Date(data.updated_at).toDateString();
-console.log(updatedAt);
+dateSpan.innerHTML = updatedAt;
 
 days.reverse();
 cases.reverse();
@@ -64,14 +66,14 @@ const myChart = new Chart(ctx, {
     data: {
         labels: days,
         datasets: [{
-            label: [`# of new confirmed cases as of ${updatedAt}`],
+            label: [`# of new confirmed cases`],
             data: cases,
             fill: true,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1
         }, {
-            label: `# of deaths as of ${updatedAt}`,
+            label: `# of deaths`,
             data: deaths,
             fill: true,
             backgroundColor: 'rgba(0,0,0)',
