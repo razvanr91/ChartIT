@@ -26,7 +26,7 @@ data = await axios.request(options).then(response => {
     return response.data.data;
 })
 
-console.log(data);
+// console.log(data);
 let days = [];
 let cases = [];
 let deaths = [];
@@ -59,7 +59,7 @@ dateSpan.innerHTML = updatedAt;
 days.reverse();
 cases.reverse();
 deaths.reverse();
-console.log(deaths)
+// console.log(deaths)
 
 const myChart = new Chart(ctx, {
     type: 'line',
