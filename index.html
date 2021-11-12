@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>ChartIT</title>
+		<title>Home | ChartIT</title>
 		<!-- Required meta tags -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -50,17 +50,42 @@
 		</nav>
 
 		<main class="flex-shrink-0">
-			<div class="container text-center">
-				<h1>Data</h1>
-				<h4>These numbers are accurate as of <span id="date" class="text-danger"></span></h4>
-				<div class="chart-container w-75 container">
-					<canvas id="chart"></canvas>
+			<div class="container text-center mt-5">
+				<h1>Covid-19 data tracking</h1>
+				<div class="row text-start pt-5">
+					<div class="col">
+						<p class="lead">
+							Trecem printr-o perioadă extrem de dificilă. Pandemia de Covid-19 ne-a afectat pe toți. Pe unii mai mult decât pe alții,
+							insă cu toții simțim efectele pandemiei. 
+						</p>
+						<p class="lead">
+							Însă, România este un caz special. Din cauza poziției sale geopolitice, lipsei de presă capabilă și obiectivă
+							care să trateze cu seriozitate și cu transparență subiectele pe care le raportează
+							și instabilității politice cu care se confruntă de mai bine de mai bine de 30 de ani, 
+							este un loc extrem de expus la campanii de dezinformare create de părți mai puțin dornice de progres, 
+							părți care au oarece nostalgii comuniste și doresc o reuniune cu Rusia.
+						</p>
+						<p class="lead">
+							De aceea am decis să creez acest site, pentru a putea oferi o perspectiva cât mai clară asupra 
+							situației în care se află țara noastră. Graficul v-a afișa <span class="newCases fw-bold">numărul de cazuri noi</span>
+							și numărul de persoane care <span class="fw-bold">au pierdut lupta cu boala</span>  din ultimele 30 de zile
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="container text-center">
+						<h1>Data</h1>
+						<h4>These numbers are accurate as of <span id="date" class="text-danger"></span></h4>
+						<div class="chart-container w-75 container">
+							<canvas id="chart"></canvas>
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>
 		<footer class="footer mt-auto py-3 bg-dark sticky-footer">
 			<div class="container-fluid text-center">
-				<span class="text-white">This data is provided by the <a href="https://about-corona.net" class="text-white">https://about-corona.net</a> API</span>
+				<span class="text-white">This data is provided by the <a href="https://about-corona.net" class="text-white" target="_blank">https://about-corona.net</a> API</span>
 			</div>
 		</footer>
 		<!-- Axios -->
@@ -71,7 +96,6 @@
 			integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
 			crossorigin="anonymous"
 		></script>
-
 		<!-- App JS -->
 		<script src="app.js" type="module"></script>
 	</body>

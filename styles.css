@@ -1,6 +1,7 @@
-main {
+/* main {
     height: 100vh;
-}
+    
+} */
 
 main>.container {
     padding: 60px 15px 0;
@@ -15,4 +16,9 @@ main>.container {
     left: 0;
     bottom: 0;
     width: 100%;
+}
+
+
+.newCases {
+    color: rgb(255, 71, 111);
 }
