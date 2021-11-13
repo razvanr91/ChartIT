@@ -64,17 +64,49 @@
 						<p class="lead">
 							De aceea am decis să creez acest site, pentru a putea oferi o perspectiva cât mai clară asupra situației în care se află țara noastră.
 							Graficul v-a afișa <span class="newCases fw-bold">numărul de cazuri noi</span> și numărul de persoane care
-							<span class="fw-bold">au pierdut lupta cu boala</span> din ultimele 30 de zile
+							<span class="fw-bold">au pierdut lupta cu boala</span> din ultimele 60 de zile
 						</p>
 					</div>
 				</div>
 				<div class="row">
 					<div class="container text-center">
 						<h1>Date</h1>
-						<h4>These numbers are accurate as of <span id="date" class="text-danger"></span></h4>
-						<div class="chart-container w-75 container">
+						<h4>Aceste date au fost actualizate pe <span id="date" class="text-danger"></span></h4>
+						<div class="chart-container container">
 							<canvas id="chart"></canvas>
 						</div>
+					</div>
+				</div>
+				<div class="container mt-5">
+					<div class="row mt-2">
+						<h1>Alte date</h1>
+						<p class="lead">Aceste date sunt raportate la o populație de <span id="population"></span></p>
+						<table class="table table-hover">
+							<tr>
+								<td>Numar de cazuri/milion de locuitori</td>
+								<td><span id="casesPerMil"></span></td>
+							</tr>
+							<tr>
+								<td>Rata de recuperare</td>
+								<td><span id="recoveryRate" class="text-success"></span></td>
+							</tr>
+							<tr>
+								<td>Rata de mortalitate</td>
+								<td><span id="deathRate" class="text-danger"></span></td>
+							</tr>
+							<tr>
+								<td>Persoane care au castigat lupta</td>
+								<td><span id="recovered" class="text-success"></span></td>
+							</tr>
+							<tr>
+								<td>Persoane care au perdut lupta</td>
+								<td><span id="totalDeaths" class="text-danger"></span></td>
+							</tr>
+							<tr>
+								<td>Persoane care se lupta cu boala</td>
+								<td><span id="activeCases" class="text-danger"></span></td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>

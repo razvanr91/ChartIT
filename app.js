@@ -6,60 +6,66 @@ let count = 0;
 let dateSpan = document.getElementById('date');
 
 const ctx = document.getElementById('chart').getContext('2d');
-let data;
 let countryCode = 'RO';
 let options = {
     method: 'GET',
-    url: `https://corona-api.com/countries/${countryCode}`
+    url: `https://corona-api.com/countries?include=timeline`
 }
+
+let data = await getData();
 
 async function getData() {
     try {
-        let response = await axios.request(options);
-        return response;
+        return await axios.request(options).then(response => {
+            return response.data.data;
+        });
     } catch (error) {
         console.error(error);
     }
 }
 
-data = await axios.request(options).then(response => {
-    return response.data.data;
+console.log(data);
+
+let ROMANIA_DATA = await data.find(country => {
+    return country.name === "Romania";
 })
 
-// console.log(data);
+console.log(ROMANIA_DATA)
 let days = [];
 let cases = [];
 let deaths = [];
-let timeline = data.timeline;
+let timeline = ROMANIA_DATA.timeline;
+let updatedAt;
+let targetIds = []
 
-// timeline.forEach(day => {
-//     days.push(day.date);
-//     cases.push(day.new_confirmed);
-//     deaths.push(day.new_deaths)
-//     count++;
-//     if (count === 30) {
-//         return;
-//     }
-// })
 
-for(let day of timeline) {
-    days.push(day.date);
-    cases.push(day.new_confirmed);
-    deaths.push(day.new_deaths)
-    count++;
-    if (count === numberOfDays) {
-        break;
+console.log(ROMANIA_DATA.timeline)
+
+async function getDailyData(timeline) {
+    for (let day of timeline) {
+        days.push(day.date);
+        cases.push(day.new_confirmed);
+        deaths.push(day.new_deaths)
+        count++;
+        if (count === numberOfDays) {
+            break;
+        }
     }
+    days.reverse();
+    cases.reverse();
+    deaths.reverse();
+    updatedAt = new Date(ROMANIA_DATA.updated_at).toLocaleDateString();
+    dateSpan.innerHTML = updatedAt;
 }
 
+async function setData(countryData) {
+    countryData;
+    getDailyData(timeline);
 
-let updatedAt = new Date(data.updated_at).toDateString();
-dateSpan.innerHTML = updatedAt;
 
-days.reverse();
-cases.reverse();
-deaths.reverse();
-// console.log(deaths)
+}
+
+setData(ROMANIA_DATA);
 
 const myChart = new Chart(ctx, {
     type: 'line',
