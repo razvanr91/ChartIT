@@ -41,7 +41,7 @@ async function getDailyData(timeline) {
         days.push(day.date);
         cases.push(day.new_confirmed);
         deaths.push(day.new_deaths)
-        count++;
+        ++count;
         if (count === numberOfDays) {
             break;
         }
