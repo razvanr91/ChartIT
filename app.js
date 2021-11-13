@@ -1,5 +1,3 @@
-// const { default: axios } = require("axios");
-
 let numberOfDays = 60;
 let count = 0;
 
@@ -24,22 +22,19 @@ async function getData() {
     }
 }
 
-console.log(data);
 
 let ROMANIA_DATA = await data.find(country => {
     return country.name === "Romania";
 })
 
-console.log(ROMANIA_DATA)
+let targetObject = createObject();
+
 let days = [];
 let cases = [];
 let deaths = [];
 let timeline = ROMANIA_DATA.timeline;
 let updatedAt;
-let targetIds = []
-
-
-console.log(ROMANIA_DATA.timeline)
+let updatedHour;
 
 async function getDailyData(timeline) {
     for (let day of timeline) {
@@ -55,14 +50,39 @@ async function getDailyData(timeline) {
     cases.reverse();
     deaths.reverse();
     updatedAt = new Date(ROMANIA_DATA.updated_at).toLocaleDateString();
+    updatedHour = new Date(ROMANIA_DATA.updated_at).toLocaleTimeString();
+    updatedAt += `-${updatedHour}`;
     dateSpan.innerHTML = updatedAt;
+}
+
+function createObject() {
+    return {
+        'population': numberWithSeparator(ROMANIA_DATA.population),
+        'casesPerMil': numberWithSeparator(ROMANIA_DATA.latest_data.calculated.cases_per_million_population),
+        'recoveryRate': ROMANIA_DATA.latest_data.calculated.recovery_rate,
+        'deathRate': ROMANIA_DATA.latest_data.calculated.death_rate,
+        'recovered': numberWithSeparator(ROMANIA_DATA.latest_data.recovered),
+        'totalDeaths': numberWithSeparator(ROMANIA_DATA.latest_data.deaths),
+        'activeCases': numberWithSeparator(ROMANIA_DATA.latest_data.critical)
+    };
+}
+
+function numberWithSeparator(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function setTableData(targetObject) {
+    for (let key in targetObject) {
+        if(targetObject.hasOwnProperty(key)) {
+            document.getElementById(key).innerHTML = targetObject[key];
+        }
+    }
 }
 
 async function setData(countryData) {
     countryData;
     getDailyData(timeline);
-
-
+    setTableData(targetObject);
 }
 
 setData(ROMANIA_DATA);
