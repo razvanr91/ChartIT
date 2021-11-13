@@ -73,7 +73,7 @@ function numberWithSeparator(x) {
 
 function setTableData(targetObject) {
     for (let key in targetObject) {
-        if(targetObject.hasOwnProperty(key)) {
+        if (targetObject.hasOwnProperty(key)) {
             document.getElementById(key).innerHTML = targetObject[key];
         }
     }
@@ -92,14 +92,14 @@ const myChart = new Chart(ctx, {
     data: {
         labels: days,
         datasets: [{
-            label: [`# of new confirmed cases`],
+            label: [`cazuri noi confirmate`],
             data: cases,
             fill: true,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1
         }, {
-            label: `# of deaths`,
+            label: `decese noi`,
             data: deaths,
             fill: true,
             backgroundColor: 'rgba(0,0,0)',
